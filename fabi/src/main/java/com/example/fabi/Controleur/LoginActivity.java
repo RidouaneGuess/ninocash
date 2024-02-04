@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                 else
                 {
                     try{
-                        Toast.makeText(LoginActivity.this, mSession.getNumero(), Toast.LENGTH_SHORT);
+                        Toast.makeText(LoginActivity.this, mSession.getMatricule(), Toast.LENGTH_SHORT);
                         Intent home=new Intent(LoginActivity.this,MainActivity.class);
                         startActivity(home);
                         finish();
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
         mNewCompte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent register = new Intent(LoginActivity.this, RegisterNPActivity.class);
+                Intent register = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(register);
             }
         });

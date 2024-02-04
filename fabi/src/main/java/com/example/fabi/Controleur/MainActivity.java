@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fabi.Model.Session;
+import com.example.fabi.Model.UserTable;
 import com.example.fabi.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,29 +23,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+        mTextView = findViewById(R.id.ninocash);
         mSession = new Session(this);
-        mUtilisateurTable = new UtilisateurTable(this);
-        mPublicationTable = new PublicationTable(this);
         mSQLiteDatabase = openOrCreateDatabase("data.db",MODE_PRIVATE,null);
-        mUtilisateurTable.onCreate(mSQLiteDatabase);
-        mPublicationTable.onCreate(mSQLiteDatabase);
-        mMainFragment = new MainFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.frameLayouttmp,mMainFragment).commit();
-        try{
-            Toast.makeText(this,mSession.getNumero(),Toast.LENGTH_SHORT);
-        }catch (Exception e)
+        mUserTable = new UserTable(this);
+        mUserTable.onCreate(mSQLiteDatabase);
+        /* Ouverteur de la session si ca existe  si non lancement de la page login */
+        try {
+            Toast.makeText(this, mSession.getMatricule(), Toast.LENGTH_SHORT);
+        }
+        catch (Exception e)
         {
             Intent login = new Intent(MainActivity.this,LoginActivity.class);
             startActivity(login);
             finish();
         }
-    }
-    private Session mSession;
-    private UtilisateurTable mUtilisateurTable;
+  }
+    private TextView mTextView;
     private SQLiteDatabase mSQLiteDatabase;
-    private PublicationTable mPublicationTable;
-    Toolbar mToolbar;
-    private MainFragment mMainFragment;
-
-
+    private UserTable mUserTable;
+    private Session mSession;
 }

@@ -8,8 +8,8 @@
    <TextView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="facebook"
-       android:textSize="40dp"
+       android:text="Bienvenue sur ninocash"
+       android:textSize="30sp"
        android:layout_marginTop="30dp"
        android:textColor="@color/bleue_facebook"
        android:gravity="center"/>
@@ -107,7 +107,7 @@
        android:id="@+id/textViewMeta2023Main"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Meta2022"
+       android:text="NINOTECH ?"
        android:gravity="center"
        android:layout_marginTop="20dp"
       />

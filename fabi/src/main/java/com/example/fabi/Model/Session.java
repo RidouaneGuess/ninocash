@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Session extends SQLiteOpenHelper {
-    public static  final String DATABASE_NAME = "data.db";
+    public static  final String DATABASE_NAME = "ninocash.db";
     public static final String NAME_TABLE="Session";
     public Session(Context context)
     {
@@ -18,7 +18,7 @@ public class Session extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS Session\n" +
                 "(\n" +
-                "    numero VARCHAR(100) PRIMARY KEY\n" +
+                "    matricule VARCHAR(100) PRIMARY KEY\n" +
                 ");");
     }
 
@@ -27,19 +27,19 @@ public class Session extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Session");
         onCreate(sqLiteDatabase);
     }
-    public String getNumero()
+    public String getMatricule()
     {
        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT numero FROM Session",null);
+        Cursor cursor = db.rawQuery("SELECT matricule FROM Session",null);
        cursor.moveToFirst();
        return cursor.getString(0);
     }
-    public boolean insert(String numero)
+    public boolean insert(String matricule)
     {
         try {
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
-            contentValues.put("numero",numero);
+            contentValues.put("matricule",matricule);
             db.insert("Session",null,contentValues);
             return true;
         }

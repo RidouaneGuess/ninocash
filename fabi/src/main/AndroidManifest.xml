@@ -15,12 +15,18 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/ninotech"
-        android:label="fabi"
+        android:label="ninocash"
         android:logo="@drawable/ninotech"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ras"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Controleur.ParametreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Controleur.SuggestionActivity"
+            android:exported="false" />
         <activity
             android:name=".Controleur.RegisterActivity"
             android:exported="false" />
@@ -31,7 +37,7 @@
             android:name=".Controleur.MainActivity"
             android:exported="true"
             android:icon="@drawable/ninotech"
-            android:label="facebook62006"
+            android:label="ninocash"
             android:logo="@drawable/ninotech">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

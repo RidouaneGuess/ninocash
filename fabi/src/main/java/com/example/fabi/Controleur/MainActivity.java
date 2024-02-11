@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fabi.Model.AccountTable;
@@ -27,15 +30,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         mBottomNavigationView = findViewById(R.id.bottom_navigation_menu);
+        mButtonAjouter = findViewById(R.id.button_ajouter_transaction);
         mToolbarMain = findViewById(R.id.toolbar_main);
+        mTextViewNomUtilisateur = findViewById(R.id.textview_nom_utilisateur);
         mSession = new Session(this);
         mSQLiteDatabase = openOrCreateDatabase("ninocash.db",MODE_PRIVATE,null);
+        mNom = getIntent().getStringExtra("Nom");
+        mPrenom = getIntent().getStringExtra("Prenom");
         mUserTable = new UserTable(this);
         mAccountTable = new AccountTable(this);
         mUserTable.onCreate(mSQLiteDatabase);
         mAccountTable.onCreate(mSQLiteDatabase);
         mHomeFragment = new HomeFragment();
         mHistoriqueFragment = new HistoriqueFragment();
+        mTextViewNomUtilisateur.setText(mNom+" "+mPrenom);
         /* Initialisation des badge
         BadgeDrawable badgeDrawableHome = mBottomNavigationView.getOrCreateBadge(R.id.accueil);
         BadgeDrawable badgeDrawableStatistique = mBottomNavigationView.getOrCreateBadge(R.id.statistique);
@@ -119,6 +127,13 @@ public class MainActivity extends AppCompatActivity {
                     return false;
                 }
             });
+            mButtonAjouter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent login = new Intent(MainActivity.this, TransactionActivity.class);
+                    startActivity(login);
+                }
+            });
         }
     private void deconnecter() {
         mSession.onUpgrade(mSQLiteDatabase,0,1);
@@ -138,5 +153,8 @@ public class MainActivity extends AppCompatActivity {
     private HistoriqueFragment mHistoriqueFragment;
     private BottomNavigationView mBottomNavigationView;
     private Toolbar mToolbarMain;
-
+    private Button mButtonAjouter;
+    private String mNom;
+    private String mPrenom="Ridouane";
+    private TextView mTextViewNomUtilisateur;
 }

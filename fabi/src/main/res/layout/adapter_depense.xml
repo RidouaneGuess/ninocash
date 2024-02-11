@@ -18,11 +18,16 @@
             android:text="Date"
             android:background="@drawable/form_white_raduis_10dp"
             android:elevation="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
             android:textSize="18sp" />
         <TextView
             android:id="@+id/textview_montant_depence"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:text="Montant"
             android:textSize="18sp" />
         <TextView
@@ -30,12 +35,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Catégorie"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:textSize="18sp" />
         <TextView
             android:id="@+id/textview_description_depence"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Description"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:textSize="18sp" />
     </LinearLayout>
 </RelativeLayout>

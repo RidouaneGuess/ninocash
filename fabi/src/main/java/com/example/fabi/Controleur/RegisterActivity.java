@@ -100,9 +100,10 @@ public class RegisterActivity extends AppCompatActivity {
                                 Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                             Intent main = new Intent(RegisterActivity.this,MainActivity.class);
+                            main.putExtra("Nom",mEditTextNom.getText().toString());
+                            main.putExtra("Prenom",mEditTextPrenom.getText().toString());
                             startActivity(main);
                             finish();
-
                         }else
                         {
                             mTextErr2.setText("Erreur de confirmation");

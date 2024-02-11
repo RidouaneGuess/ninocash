@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/label_categorie_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Catégorie :" />
+    <Spinner
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/spinner_categorie_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_categorie_transaction" />
+
+    <TextView
+        android:id="@+id/label_type_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Type :"
+        android:layout_below="@+id/spinner_categorie_transaction" />
+    <Spinner
+        android:id="@+id/spinner_type_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/label_type_transaction" />
+
+    <TextView
+        android:id="@+id/label_montant_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Montant :"
+        android:layout_below="@+id/spinner_type_transaction" />
+    <EditText
+        android:id="@+id/edit_montant_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/label_montant_transaction"
+        android:inputType="numberDecimal" />
+    <TextView
+        android:id="@+id/label_date_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date :"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/edit_montant_transaction" />
+    <DatePicker
+        android:id="@+id/date_picker_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_date_transaction"
+        android:layout_above="@+id/label_description_transaction" />
+    <TextView
+        android:id="@+id/label_description_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description :"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_above="@+id/edit_description_transaction"/>
+
+    <EditText
+        android:id="@+id/edit_description_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_above="@+id/label_source_transaction"
+        android:inputType="textMultiLine" />
+    <TextView
+        android:id="@+id/label_source_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Source(Pour la catégorie Revenu) :"
+        android:layout_above="@+id/edit_source_transaction"/>
+    <EditText
+        android:id="@+id/edit_source_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/message_sortie"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:inputType="text" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/message_sortie"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_above="@id/button_add_transaction"
+        />
+    <Button
+        android:id="@+id/button_add_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:text="Ajouter"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

@@ -21,26 +21,58 @@
             android:textSize="30dp"
             android:textStyle="bold" />
         <Button
-            android:id="@+id/idButtonAjouter"
+            android:id="@+id/button_ajouter_transaction"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:background="@drawable/forme_white_cercle"
             android:theme="@style/CouleurToolbar"
             app:icon="@drawable/baseline_add_24"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="100dp"
             app:iconTint="@color/black" />
     </androidx.appcompat.widget.Toolbar>
     <RelativeLayout
+        android:id="@+id/tableau_bord"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:background="@drawable/form_ninocash_raduis_10dp"
+        android:elevation="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_below="@+id/toolbar_main"
-        android:layout_above="@+id/frameLayoutMain"
-        >
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview_nom_utilisateur"
+            android:text="Aboubacar Hamidou Ridouane"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/TextViewSolde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Solde"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textview_nom_utilisateur"
+            />
+        <TextView
+            android:id="@+id/textview_solde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1000 FCFA"
+            android:layout_below="@+id/TextViewSolde"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            />
     </RelativeLayout>
     <FrameLayout
         android:id="@+id/frameLayoutMain"
         android:layout_width="match_parent"
-        android:layout_below="@+id/toolbar_main"
+        android:layout_below="@+id/tableau_bord"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_navigation_menu"
         />

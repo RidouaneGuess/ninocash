@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fabi.Model.AccountTable;
+import com.example.fabi.Model.DepenseTable;
+import com.example.fabi.Model.RevenuTable;
 import com.example.fabi.Model.Session;
 import com.example.fabi.Model.UserTable;
 import com.example.fabi.R;
@@ -39,8 +41,12 @@ public class MainActivity extends AppCompatActivity {
         mPrenom = getIntent().getStringExtra("Prenom");
         mUserTable = new UserTable(this);
         mAccountTable = new AccountTable(this);
+        mDepenseTable = new DepenseTable(this);
+        mRevenuTable = new RevenuTable(this);
         mUserTable.onCreate(mSQLiteDatabase);
         mAccountTable.onCreate(mSQLiteDatabase);
+        mDepenseTable.onCreate(mSQLiteDatabase);
+        mRevenuTable.onCreate(mSQLiteDatabase);
         mHomeFragment = new HomeFragment();
         mHistoriqueFragment = new HistoriqueFragment();
         mTextViewNomUtilisateur.setText(mNom+" "+mPrenom);
@@ -99,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(login);
             finish();
         }
+        if(mDepenseTable.insert("1111","1111",1111,"1111","1111","1111"))
+            Toast.makeText(this, "inseré", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "non inseré", Toast.LENGTH_SHORT).show();
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutMain,mHomeFragment).commit();
         /* En Clikquant sur les boutton de la barre de navigation */
             mBottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -148,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase mSQLiteDatabase;
     private UserTable mUserTable;
     private AccountTable mAccountTable;
+    private DepenseTable mDepenseTable;
+    private RevenuTable mRevenuTable;
     private Session mSession;
     private HomeFragment mHomeFragment;
     private HistoriqueFragment mHistoriqueFragment;
@@ -155,6 +166,6 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbarMain;
     private Button mButtonAjouter;
     private String mNom;
-    private String mPrenom="Ridouane";
+    private String mPrenom;
     private TextView mTextViewNomUtilisateur;
 }

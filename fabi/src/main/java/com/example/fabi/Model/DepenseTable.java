@@ -17,7 +17,7 @@ public class DepenseTable extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS Depense\n" +
                 "(\n" +
-                "    idRevenu INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+                "    idDepense INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
                 "    matricule VARCHAR(100) NOT NULL,\n" +
                 "    dateDepense VARCHAR(100) NOT NULL,\n" +
                 "    montantDepense FLOAT NOT NULL,\n" +
@@ -34,7 +34,7 @@ public class DepenseTable extends SQLiteOpenHelper {
     public Cursor getData(String matricule)
     {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM Depense WHERE matricule='" + matricule + "';",null);
+        Cursor res = db.rawQuery("SELECT * FROM Depense WHERE matricule=\"" + matricule + "\";",null);
         return res;
     }
 

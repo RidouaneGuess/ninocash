@@ -6,6 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         mAccountTable = new AccountTable(this);
         mDepenseTable = new DepenseTable(this);
         mRevenuTable = new RevenuTable(this);
+        mDeconnexionDialog = new DeconnexionDialog(this);
         mUserTable.onCreate(mSQLiteDatabase);
         mAccountTable.onCreate(mSQLiteDatabase);
         mDepenseTable.onCreate(mSQLiteDatabase);
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         mToolbarMain.getMenu().getItem(4).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                deconnecter();
+                deconnecterDialog();
                 return false;
             }
         });
@@ -144,6 +147,26 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+        private void deconnecterDialog()
+        {
+            TextView oui = mDeconnexionDialog.findViewById(R.id.textview_text_oui);
+            TextView non = mDeconnexionDialog.findViewById(R.id.textview_text_non);
+            oui.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    deconnecter();
+                }
+            });
+            non.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mDeconnexionDialog.cancel();
+                }
+            });
+            mDeconnexionDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            mDeconnexionDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+            mDeconnexionDialog.build();
+        }
     private void deconnecter() {
         mSession.onUpgrade(mSQLiteDatabase,0,1);
         Intent login = new Intent(MainActivity.this, MainActivity.class);
@@ -168,4 +191,5 @@ public class MainActivity extends AppCompatActivity {
     private String mNom;
     private String mPrenom;
     private TextView mTextViewNomUtilisateur;
+    private DeconnexionDialog mDeconnexionDialog;
 }
